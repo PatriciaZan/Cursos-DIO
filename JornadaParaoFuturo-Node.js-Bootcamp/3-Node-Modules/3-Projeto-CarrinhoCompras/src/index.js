@@ -5,6 +5,7 @@ import {
   deleteItem,
   calculateTotal,
   removeItem,
+  cartService,
 } from "./services/cart.js";
 
 const myCart = [];
@@ -17,6 +18,12 @@ const item2 = await createItem("Carrinho", 39.99, 2);
 await addItem(myCart, item1);
 await addItem(myCart, item2);
 
-console.log("Your cart total is: ");
+//await deleteItem(myCart, item1.name);
+//await deleteItem(myCart, item2.name);
 
+await removeItem(myCart, 2);
+
+//console.log("Your cart total is: ");
 await calculateTotal(myCart);
+
+await cartService(myCart);
