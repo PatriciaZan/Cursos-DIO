@@ -1,23 +1,27 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { serviceListEpisodes } from "../services/list-episodes-service";
 import { serviceFilterEpisodes } from "../services/filter-episodes-service";
+import { ContentType } from "../utils/content-type";
+import { FilterPodCastModel } from "../models/filter-podcast-model";
 
 export const getListEpisodes = async (
   req: IncomingMessage,
   res: ServerResponse,
 ) => {
-  const content = await serviceListEpisodes();
+  const content: FilterPodCastModel = await serviceListEpisodes();
 
-  res.writeHead(200, { "Content-type": "application/json" });
-  res.end(JSON.stringify(content));
+  res.writeHead(content.statusCode, { "Content-type": ContentType.JSON });
+  res.write(JSON.stringify(content.body));
+  res.end();
 };
 
 export const getFilterEpisodes = async (
   req: IncomingMessage,
   res: ServerResponse,
 ) => {
-  const content = await serviceFilterEpisodes(req.url);
+  const content: FilterPodCastModel = await serviceFilterEpisodes(req.url);
 
-  res.writeHead(200, { "Content-type": "application/json" });
-  res.end(JSON.stringify(content));
+  res.writeHead(content.statusCode, { "Content-type": ContentType.JSON });
+  res.write(JSON.stringify(content.body));
+  res.end();
 };
