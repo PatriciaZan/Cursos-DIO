@@ -30,7 +30,7 @@ There were 6 projects in this course;
 - Formula1 with Fastify <br>
   - Creating a full API with Fastify;
 - Champions League ExpressJS <br>
-  - A RestFull API for listing players, GET, PUT, DELETE and clubs, GET.
+  - A RESTful API for listing players, GET, PUT, DELETE and clubs, GET.
 
 ## Folder Structure
 
